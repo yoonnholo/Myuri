@@ -73,3 +73,4 @@ read_excel("Desktop/RSave/hololo.xlsx")
 AA
 View(hololo)
 str(hololo)
+ZZ<-617

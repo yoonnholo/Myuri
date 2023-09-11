@@ -59,11 +59,17 @@ read_excel("Home/Desktop/R save/hololo.xlsx")
 
 getwd()
 
-read_excel("/Users/Yoonhyuk_Jeong/Desktop/R save/hololo.xlsx")
-AA <- read_excel("/Users/Yoonhyuk_Jeong/Desktop/R save/hololo.xlsx")
+read_excel("/Users/Yoonhyuk_Jeong/Desktop/Rsave/hololo.xlsx")
+AA <- read_excel("/Users/Yoonhyuk_Jeong/Desktop/Rsave/hololo.xlsx")
 AA
-read_excel("Desktop/R save/hololo.xlsx")
+read_excel("Desktop/Rsave/hololo.xlsx")
 read_excel("hololo.xlsx")
 
 install.packages("remotes")
 remotes::install_github("anthonynorth/rscodeio")
+
+library(readxl)
+read_excel("Desktop/RSave/hololo.xlsx")
+AA
+View(hololo)
+str(hololo)

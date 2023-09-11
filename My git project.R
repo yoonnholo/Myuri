@@ -11,3 +11,6 @@ D
 GodAnime=spicenwolf
 View(hololo)
 getwd()
+
+Sorry=D
+Sorry

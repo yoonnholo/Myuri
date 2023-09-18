@@ -23,3 +23,8 @@ remotes::install_github("anthonynorth/rscodeio")
 rscodeio::install_theme()
 D
 factor(C)
+
+install.packages("tidyverse")
+library(tidyverse)
+getwp()
+getwd()

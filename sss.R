@@ -75,3 +75,31 @@ View(hololo)
 str(hololo)
 ZZ<-617
 D
+
+New<-c(5,10,99,8)
+New
+New %>%
+  abs() %>%
+  mean() %>%
+  sqrt()
+
+install.packages("nycflights13", repos = "http://cran.us.r-project.org")
+library(nycflights13)
+head(flights)
+show(flights)
+flight_df<-data.frame(flights)
+str(flight_df)
+flight_df %>%
+  filter(month==2)
+
+flight_df %>%
+  filter(month==2, day==1)
+
+flight_df %>%
+  select(year:day)
+
+date_df <- data.frame(flight_df %>%
+                        select(year:day)
+)
+date_df
+date_df

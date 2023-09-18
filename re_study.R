@@ -1,3 +1,5 @@
+library(tidyverse)
+
 flight_df
 
 flight_df %>% 
@@ -15,3 +17,9 @@ fly %>%
             MIN=min(result),
             MEAN=mean(result)) %>% 
   arrange(desc(final == "good"))
+
+
+flight_df %>%              ##194342
+  filter(arr_delay<=0) %>% 
+  select(year:day,arr_time:arr_delay) %>% 
+  

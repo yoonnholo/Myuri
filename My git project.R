@@ -34,3 +34,11 @@ summary(hololo2$ID)
 table(hololo2$Species)
 table(bts$btsposition)
 table(bts$btsname,btsposition)
+
+data("mpg")
+View(mpg)
+str(mpg)
+
+A<-ggplot(data = mpg,aes(x=displ,y=hwy))
+A+geom_point()
+A+geom_histogram()

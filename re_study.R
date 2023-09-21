@@ -1,4 +1,7 @@
 library(tidyverse)
+install.packages("ggplot2")
+library(ggplot2)
+
 
 flight_df
 
@@ -22,3 +25,4 @@ fly %>%
 flight_df %>%              ##194342
   filter(arr_delay<=0) %>% 
   select(year:day,arr_time:arr_delay)
+

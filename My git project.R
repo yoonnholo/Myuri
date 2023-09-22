@@ -42,3 +42,20 @@ str(mpg)
 A<-ggplot(data = mpg,aes(x=displ,y=hwy))
 A+geom_point()
 A+geom_histogram()
+
+A <- ggplot(data = mpg, aes(x=year))
+A+geom_histogram()
+mpg
+Z<-data.frame(mpg)
+Z %>% 
+  count(year)
+
+B<-ggplot(data = mpg,aes(x=manufacturer,y=hwy))
+B+geom_boxplot()
+
+B<-ggplot(data=mpg, aes(x=displ,y=hwy))
+B+stat_summary(fun= mean,geom = "bar")
+
+install.packages("foreign")
+library(foreign)
+A

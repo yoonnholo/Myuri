@@ -3,6 +3,7 @@ AA<-100
 
 library(ggplot2)
 library(tidyverse)
+getwd()
 
 spicenwolf<-c("Holo","Myuri","Law")
 str(spicenwolf)

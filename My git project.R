@@ -77,3 +77,5 @@ str(B$EDU)
 
 levels(BEFORE$EDU)
 
+BEFORE %>%
+  filter(EDU!="-5")

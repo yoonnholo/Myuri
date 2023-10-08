@@ -20,8 +20,58 @@ head(flights)
 DATA <- data.frame(flights)
 DATA
 str(DATA)
-
 DATA %>% 
   filter(month %in% c(1,3,5)) -> DATA135
 table(DATA135$month)
 table(DATA$month)
+
+DATA135 %>% 
+  select(month:arr_delay) -> DATA135
+str(DATA135)
+DATA135 %>% 
+  mutate(delay=arr_delay-dep_delay) -> DATA135
+DATA135 %>% 
+  mutate(GorB=ifelse(delay>=0,"Good","Bad")) -> DATA135
+
+table(DATA135$GorB)
+DATA135 %>% 
+  count(GorB)
+
+
+DATA135$air_time <- with(DATA135,(
+dep_hour <- floor(dep_time / 100) %>% 
+dep_minute <- dep_time %% 100 %>% 
+arr_hour <- floor(arr_time / 100) %>% 
+arr_minute <- arr_time %% 100 %>% 
+hour_diff <- arr_hour - dep_hour %>% 
+minute_diff <- arr_minute - dep_minute %>% 
+if (minute_diff < 0) {
+  hour_diff <- hour_diff - 1
+  minute_diff <- 60 + minute_diff
+} %>% 
+air_time <- hour_diff * 60 + minute_diff))
+
+DATA135$air_time <- with(DATA135, {
+  dep_hour <- floor(dep_time / 100)
+  dep_minute <- dep_time %% 100
+  arr_hour <- floor(arr_time / 100)
+  arr_minute <- arr_time %% 100
+  hour_diff <- arr_hour - dep_hour
+  minute_diff <- arr_minute - dep_minute
+  ifelse (minute_diff < 0,
+    hour_diff <- hour_diff - 1,
+    minute_diff <- minute_diff + 60)  # 음수 분을 양수로 변경
+  
+  air_time <- hour_diff * 60 + minute_diff
+  return(air_time)  # 결과 반환
+})
+  
+
+DATA135 %>% 
+  filter(!is.na(GorB)) %>% 
+  group_by(GorB) %>% 
+  summarise(MEAN=mean(air_time),
+            MAX=max(delay),
+            MIN=min(delay),
+            n=n()) -> RE
+RE

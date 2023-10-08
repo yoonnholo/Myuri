@@ -75,3 +75,34 @@ DATA135 %>%
             MIN=min(delay),
             n=n()) -> RE
 RE
+FRAME
+firstname<-c("J","L","L","P","Y")
+FRAME2<-data.frame(firstname)
+bind_cols(FRAME,FRAME2) -> FRAME3
+str(FRAME3)
+
+FRAME3$firstname<-as.factor(FRAME3$firstname)
+
+name<-c("Yoon","Tae","Jun")
+position<-c("sup","adc","mid")
+tier<-c("Bron","Plat","Plat")
+data1<-data.frame(name,position,tier)
+
+nation<-c("Kor","Can","Can")
+data2<-data.frame(name,tier,nation)
+
+data1 %>% 
+  right_join(data2,by="name",suffix=c("_1","_2"))
+
+data1 %>% 
+  inner_join(data2, by="name")
+
+data1 %>% 
+  full_join(data2,by="name")
+
+memberframe<-data.frame(name="Hun",tier="Sil",nation="Kor")
+memberframe2<-data.frame(name="Jae",position="Jg",tier="Gol")
+bind_rows(data2,memberframe) -> data2
+bind_rows(data1,memberframe2) ->data1
+
+

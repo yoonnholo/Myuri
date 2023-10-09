@@ -105,4 +105,25 @@ memberframe2<-data.frame(name="Jae",position="Jg",tier="Gol")
 bind_rows(data2,memberframe) -> data2
 bind_rows(data1,memberframe2) ->data1
 
+read.delim("HCCP_Head_3th.txt",header = T) -> company_3
+read.delim("HCCP_Head_4th.txt",header = T,fileEncoding = "utf16") -> company_4
+read.delim("HCCP_Work_3rd.txt",header = T) -> worker_3
+read.delim("HCCP_Work_4th.txt",header = T) -> worker_4
+
+worker_3 %>% 
+  rename_all(tolower) -> worker_3
+worker_4 %>% 
+  rename_all(tolower) -> worker_4
+company_3 %>% 
+  rename_all(tolower) -> company_3
+company_4 %>% 
+  rename_all(tolower) -> company_4
+
+worker_3 %>% 
+  count(w3_id1)
+
+company_3 %>% 
+  select(c3_id1,c3_ind1,c3_ksic1,c3_scale,c3a02_07,c3b02_01_01) -> company_3
+company_4 %>% 
+  select(c4_id1,c4_ind1,c4_ksic1,c4_scale,c4a02_07,c4b02_01_01) -> company_4
 

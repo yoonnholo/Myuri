@@ -123,7 +123,29 @@ worker_3 %>%
   count(w3_id1)
 
 company_3 %>% 
-  select(c3_id1,c3_ind1,c3_ksic1,c3_scale,c3a02_07,c3b02_01_01) -> company_3
+  select(c3_id1,c3_ind1,c3_ksic1,c3_scale,c3a02_07,c3b02_01_01) -> company_3se
 company_4 %>% 
-  select(c4_id1,c4_ind1,c4_ksic1,c4_scale,c4a02_07,c4b02_01_01) -> company_4
+  select(c4_id1,c4_ind1,c4_ksic1,c4_scale,c4a02_07,c4b02_01_01) -> company_4se
+
+worker_3 %>% 
+  count(worker_3$w336_01)
+
+ggplot(worker_3) +
+  geom_histogram(aes(x=w336_02),color = "gold", fill = "black") +
+  labs(title = "근로자 주당 초과근무", x = "주당 초과근무 시간", y ="(명)")
+
+
+worker_3 %>% 
+  filter(w336_02>=0) %>% 
+  ggplot() + 
+  geom_histogram(aes(x=w336_02), bins = 50, color = "red", fill = "white")
+
+worker_3 %>% 
+  filter(w336_01>=0 & w336_02>=0) %>% 
+  mutate(workhour=w336_01+w336_02) %>% 
+  ggplot() + 
+  geom_histogram(aes(x=workhour, after_stat(density)), bins = 50, color = "red", fill = "white") +
+  labs(title = "근로자의 주당 근로시간", x = "총 근무시간")
+
+
 

@@ -147,5 +147,10 @@ worker_3 %>%
   geom_histogram(aes(x=workhour, after_stat(density)), bins = 50, color = "red", fill = "white") +
   labs(title = "근로자의 주당 근로시간", x = "총 근무시간")
 
-
+worker_3 %>% 
+  filter(w336_01>=0 & w336_02>=0) %>% 
+  mutate(workhour=w336_01+w336_02) %>% 
+  ggplot() +
+  geom_density(aes(x = workhour), color = "blue", fill = "skyblue") +
+  geom_histogram(aes(x = workhour, y= ..density..), color = "red", fill = "white", alpha = 0.2, bins = 50)
 

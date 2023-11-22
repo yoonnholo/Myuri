@@ -3,43 +3,20 @@
 data <- read.csv("KCYPS2018m1Yw4.csv")
 data
 
-YDLQ1A01
-YDLQ1A02
-YDLQ1A03
-YDLQ1A04
-YDLQ1A05
-YDLQ1A06
-YDLQ1A07
-YDLQ1A08
-YDLQ1A09
-YDLQ1A10
-YDLQ1A11
-YDLQ1A12
-YDLQ1A13
-YDLQ1A14
-YDLQ1A15
-
-str(data)
-
-fly_data <- data %>% 
-  select(YDLQ1A01w4:YDLQ1A15w4)
-summary(fly_data)
-
-fly_data2 <- fly_data %>%
-  filter(!(YDLQ1A01w4 == 1 & YDLQ1A02w4 == 1 & YDLQ1A03w4 == 1 & YDLQ1A04w4 == 1 & YDLQ1A05w4 == 1 &
-             YDLQ1A06w4 == 1 & YDLQ1A07w4 == 1 & YDLQ1A08w4 == 1 & YDLQ1A09w4 == 1 & YDLQ1A10w4 == 1 &
-             YDLQ1A11w4 == 1 & YDLQ1A12w4 == 1 & YDLQ1A13w4 == 1 & YDLQ1A14w4 == 1 & YDLQ1A15w4 == 1))
-
-summary(fly_data2)
-
-smoking <- fly_data2 %>% 
-  select(YDLQ1A01w4)
-table(smoking)
-
 data %>% 
-  select(YDLQ2A01w4:YDLQ2A15w4) -> cyber
-summary(cyber)
+  select(HID,PID,YGENDERw4,YDLQ2A01w4,YMDA1C01w4:YMDA1C15w4,YDLQ1A01w4:YDLQ1A15w4,YPSY4B01w4:YPSY4B06w4) %>% 
+  rowwise() %>%
+  mutate(SmartPhone = sum(c_across(starts_with("YMDA1C01w4"):starts_with("YMDA1C15w4")), na.rm = TRUE)) %>% 
+  mutate(Real = sum(c_across(starts_with("YDLQ1A01w4"):starts_with("YDLQ1A15w4")), na.rm = TRUE)) %>% 
+  mutate(Agressive = sum(c_across(starts_with("YPSY4B01w4"):starts_with("YPSY4B06w4")), na.rm = TRUE)) %>% 
+  rename(Cyber_Fly = YDLQ2A01w4) %>% 
+  rename(Gender = YGENDERw4) %>% 
+  select(-starts_with("YMDA1C01w4"): -starts_with("YMDA1C15w4")) %>% 
+  select(-starts_with("YDLQ1A01w4"): -starts_with("YDLQ1A15w4")) %>% 
+  select(-starts_with("YPSY4B01w4"): -starts_with("YPSY4B06w4")) %>% 
+  na.omit() -> new
 
-cyber %>% 
-  select(YDLQ2A03w4) %>% 
-  table()
+table(new$Cyber_Fly)
+table(new$Real)
+table(new$SmartPhone)
+table(new$Agressive)

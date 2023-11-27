@@ -22,3 +22,6 @@ table(new$Cyber_Fly)
 table(new$Real)
 table(new$SmartPhone)
 table(new$Agressive)
+
+table(new$HomeID)
+table(new$PersonalID)

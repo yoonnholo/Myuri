@@ -1,4 +1,4 @@
-##소논문 써보자 씨발
+##소논문 써보자 아아악
 
 data <- read.csv("KCYPS2018m1Yw4.csv")
 data
@@ -11,6 +11,8 @@ data %>%
   mutate(Agressive = sum(c_across(starts_with("YPSY4B01w4"):starts_with("YPSY4B06w4")), na.rm = TRUE)) %>% 
   rename(Cyber_Fly = YDLQ2A01w4) %>% 
   rename(Gender = YGENDERw4) %>% 
+  rename(HomeID = HID) %>% 
+  rename(PersonalID = PID) %>% 
   select(-starts_with("YMDA1C01w4"): -starts_with("YMDA1C15w4")) %>% 
   select(-starts_with("YDLQ1A01w4"): -starts_with("YDLQ1A15w4")) %>% 
   select(-starts_with("YPSY4B01w4"): -starts_with("YPSY4B06w4")) %>% 

@@ -20,7 +20,10 @@ data %>%
 
 view(new)
 
+## 종속변인
 table(new$Cyber_Misdeed)
+## 독립변인
 table(new$SmartPhone)
+## 통제변인
 table(new$Real_Misdeed)
 table(new$Agression)

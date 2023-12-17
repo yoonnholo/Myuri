@@ -6,8 +6,10 @@ library(tidyverse)
 library(extrafont)
 library(haven)
 library(car)
+library(corrplot)
 
 getwd()
+R.version
 
 font_import(pattern = "malgun")
 y
@@ -17,4 +19,4 @@ fonts()
 theme_set(theme_minimal(base_family = "Malgun Gothic"))
 install.packages("haven")
 
-install.packages("car")
+install.packages("corrplot")

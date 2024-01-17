@@ -1,4 +1,4 @@
-AA<-100
+AA<-500
 ##https://github.com/yoonnholo/Myuri
 
 library(ggplot2)

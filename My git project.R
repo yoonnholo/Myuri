@@ -7,6 +7,7 @@ library(extrafont)
 library(haven)
 library(car)
 library(corrplot)
+library(rstan)
 
 getwd()
 R.version

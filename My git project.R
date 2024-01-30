@@ -8,6 +8,7 @@ library(haven)
 library(car)
 library(corrplot)
 library(rstan)
+theme_set(theme_minimal(base_family = "Malgun Gothic"))
 
 getwd()
 R.version
@@ -17,7 +18,7 @@ y
 theme_set(theme_minimal(base_family = "malgun"))
 
 fonts()
-theme_set(theme_minimal(base_family = "Malgun Gothic"))
+
 install.packages("haven")
 
 install.packages("corrplot")

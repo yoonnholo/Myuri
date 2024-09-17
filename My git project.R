@@ -4,6 +4,7 @@ AA<-500
 library(ggplot2)
 library(tidyverse)
 library(extrafont)
+
 library(haven)
 library(car)
 library(corrplot)
@@ -20,5 +21,8 @@ theme_set(theme_minimal(base_family = "malgun"))
 fonts()
 
 install.packages("haven")
+install.packages("ggplot2")
+install.packages("tidyverse")
+install.packages("extrafont")
 
 install.packages("corrplot")

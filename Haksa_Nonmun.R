@@ -33,6 +33,12 @@ new_data$LowCommunicate4 <- 6 - new_data$LowCommunicate4
 new_data$LowCommunicate5 <- 6 - new_data$LowCommunicate5
 new_data$Turnover2 <- 6 - new_data$Turnover2
 
+## 통제변수 삽입
+new_data$Gender <- RAW$W22DQ01
+new_data$Married <- RAW$W22DQ03
+new_data$Edu <- RAW$W22DQ04
+new_data$Major <- RAW$W22DQ041
+
 ## 결측치 확인
 colSums(is.na(new_data))
 
@@ -44,12 +50,16 @@ sapply(new_data, check_outliers)
 lapply(new_data, table, useNA = "ifany")
 
 ## 변수 합치기
-new_data$Hierarchical <- rowSums(new_data[, c("Hierarchical1", "Hierarchical2", "Hierarchical3")], na.rm = TRUE)
+new_data$Hierarchical <- rowSums(new_data[, c("Hierarchical1", "Hierarchical2", "Hierarchical3")], na.rm = TRUE) / 3
 new_data$LowCommunicate <- rowSums(new_data[, c("LowCommunicate1", "LowCommunicate2", "LowCommunicate3", 
-                                                "LowCommunicate4", "LowCommunicate5")], na.rm = TRUE)
-new_data$Satisfaction <- rowSums(new_data[, c("Satisfaction1", "Satisfaction2", "Satisfaction3", "Satisfaction4")], na.rm = TRUE)
-new_data$Commitment <- rowSums(new_data[, c("Commitment1", "Commitment2")], na.rm = TRUE)
-new_data$Turnover <- rowSums(new_data[, c("Turnover1", "Turnover2")], na.rm = TRUE)
+                                                "LowCommunicate4", "LowCommunicate5")], na.rm = TRUE) / 5
+new_data$Satisfaction <- rowSums(new_data[, c("Satisfaction1", "Satisfaction2", "Satisfaction3", "Satisfaction4")], na.rm = TRUE) / 4
+new_data$Commitment <- rowSums(new_data[, c("Commitment1", "Commitment2")], na.rm = TRUE) / 2
+new_data$Turnover <- rowSums(new_data[, c("Turnover1", "Turnover2")], na.rm = TRUE) / 2
+
+table(new_data$Hierarchical)
+table(new_data$Satisfaction)
+
 
 ## MZ 분류하기
 

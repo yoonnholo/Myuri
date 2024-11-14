@@ -4,7 +4,7 @@ AA<-500
 library(ggplot2)
 library(tidyverse)
 library(extrafont)
-
+library(psych)
 library(haven)
 library(car)
 library(corrplot)
@@ -24,5 +24,5 @@ install.packages("haven")
 install.packages("ggplot2")
 install.packages("tidyverse")
 install.packages("extrafont")
-
+install.packages("psych")
 install.packages("corrplot")

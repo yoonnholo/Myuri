@@ -11,6 +11,11 @@ library(corrplot)
 library(rstan)
 theme_set(theme_minimal(base_family = "Malgun Gothic"))
 
+library(strucchange)
+
+install.packages("strucchange")
+
+
 getwd()
 R.version
 
